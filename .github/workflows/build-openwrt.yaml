@@ -106,6 +106,7 @@ jobs:
           path: firmware/*
 
       - name: Create release
+        if: ${{ false }}
         run: |
           RELEASE_DATE=$(date +%F)
           gh release delete "${{ needs.check_commits.outputs.release_prefix }}-${RELEASE_DATE}" --cleanup-tag -y --repo "${{ github.repository }}" ||:
@@ -125,6 +126,7 @@ jobs:
           - **REMOVED:** odhcp, upnp, iptables, avahi, samba, usb storage..." --title "OpenWrt Custom Release for Flint 2 (${{ needs.check_commits.outputs.release_prefix }}-${RELEASE_DATE})" firmware/*
 
       - name: Clean up old releases
+         if: ${{ false }}
         run: |
           # '.[0:10][]' limits to the 10 most recent releases
           gh api repos/${{ github.repository }}/releases | jq -r '.[10:][] | "\(.id) \(.tag_name)"' | while read id tag; do
