@@ -1,8 +1,7 @@
 name: Build OpenWrt for GL-MT6000
 
 permissions:
-  contents: write
-  actions: write
+  contents: read
 
 on:
   workflow_dispatch:
